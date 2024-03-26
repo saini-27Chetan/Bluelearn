@@ -1,16 +1,41 @@
-public boolean searchMatrix(int[][] matrix, int target) {
-int row=matrix.length;
-int col=matrix[0].length;
+import java.util.*;
 
-int low=0, high=(row*col)-1;
-    while(low<=high){
-        int mid= low + (high-low)/2;
-        if(matrix[mid/col][mid%col]==target)
-            return true;
-        else if(matrix[mid/col][mid%col]>target)                
-            high=mid-1;
-        else
-            low=mid+1;
+public class search2D {
+    public static boolean searchMatrix(int[][] matrix, int target) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+
+        int low = 0, high = (row * col) - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (matrix[mid / col][mid % col] == target)
+                return true;
+            else if (matrix[mid / col][mid % col] > target)
+                high = mid - 1;
+            else
+                low = mid + 1;
+        }
+        return false;
     }
-    return false;
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter the size of the matrix");
+        int n = s.nextInt();
+
+        int[][] matrix = new int[n][n];
+        System.out.println("Enter the elements of the matrix in row-wise sorted order");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = s.nextInt();
+            }
+        }
+        System.out.println("Enter the element to search");
+        int target = s.nextInt();
+
+        boolean result = searchMatrix(matrix, target);
+
+        System.out.println(result ? "Target is present" : "Target is not present");
+        s.close();
+    }
 }
