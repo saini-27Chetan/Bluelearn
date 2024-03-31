@@ -1,0 +1,104 @@
+body{
+    margin:3rem auto;
+    padding:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #f7ffd5;
+    flex-direction: column;
+}
+
+header{
+    font-size: 5rem;
+    font-weight: 900;
+}
+
+#container{
+    display: grid;
+    width: 20%;
+    height: 60vh;
+    grid-template-areas:
+    "cal-display cal-display cal-display cal-display"
+    "ce-btn divide mul sub"
+    "seven eight nine add"
+    "four five six add"
+    "one two three eql"
+    "zero dob-zero dob-zero eql";
+    border:2px solid black;
+    border-radius: 2rem;
+    gap: 1rem;
+    padding: 2rem;
+    overflow: hidden;
+    min-width: 250px;
+    background-color: rgb(75 88 94);
+}
+
+#calculator-display{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: 1px solid black;
+    border-radius: 1rem;
+    background-color: rgb(122 187 122);
+    box-shadow: 4px 3px 10px rgb(50, 50, 50) inset;
+    font-size: 2rem;
+}
+
+button{
+    font-size: 1.5rem;
+    border-radius: 20%;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+.operator-btn{
+    background-color: rgb(255, 78, 78);
+}
+
+.clear-btn, .equal-btn{
+    background-color: #b1ec6d;;
+}
+
+@media (max-width: 500px) and (min-width:300px){
+    #container{
+        min-width: 200px;
+        gap:0.5rem;
+        padding: 1rem;
+        height: 50vh;
+    }
+    header{
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 300px) {
+    body {
+        visibility: hidden; /* Hide the body content */
+    }
+    body::before{
+        content: '😥';
+        position: absolute;
+        top: 30%;
+        left: auto;   
+        z-index: 10; 
+        visibility: visible;
+        color: red;
+    }
+    body::after {
+        content: "Opps!! Your screen size is small. Can't display the website on this viewport";
+        position: absolute;
+        top: auto;
+        left: auto;
+        background-color: rgb(255, 196, 196); 
+        padding: 5px;  
+        z-index: 10; 
+        visibility: visible;
+        color: red;
+        font-weight: 800;
+    }
+}
+
